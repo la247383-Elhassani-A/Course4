@@ -177,12 +177,12 @@ public partial class Course
                 ligne = gauche + voiture[index - 1] + droite;
                 affichage += ligne.PadLeft(70);
 
-                int posRouG = ligne.IndexOf(ROUE_GAUCHE);
-                int posRouGT = ligne.IndexOf(ROUE_GAUCHE_TOURNER);
-                int posRouD = ligne.IndexOf(ROUE_DROITE);
-                int posRouDT = ligne.IndexOf(ROUE_DROITE_TOURNER);
+                int posRoueG = ligne.IndexOf(ROUE_GAUCHE);
+                int posRoueGT = ligne.IndexOf(ROUE_GAUCHE_TOURNER);
+                int posRoueD = ligne.IndexOf(ROUE_DROITE);
+                int posRoueDT = ligne.IndexOf(ROUE_DROITE_TOURNER);
 
-                if ((posRouG != -1 && posRouG <= bordure1) || (posRouGT != -1 && posRouGT <= bordure1) || (posRouD != -1 && posRouD >= bordure2) || (posRouDT != -1 && posRouDT >= bordure2))
+                if ((posRoueG != -1 && posRoueG <= bordure1) || (posRoueGT != -1 && posRoueGT <= bordure1) || (posRoueD != -1 && posRoueD >= bordure2) || (posRoueDT != -1 && posRoueDT >= bordure2))
                 {
                     if (typeDejeu == TypesDeJeu.Temps)
                     {
@@ -214,7 +214,7 @@ public partial class Course
     {
         try
         {
-            int acceleration = 3;
+            int acceleration = 1;
             if (vitesseActuelle <= 0) vitesseActuelle = VITESSE_MIN;
             if (vitesseActuelle >= 100) vitesseActuelle = VITESSE_MAX;
             int accelerationTouche = Convert.ToInt32(2 / Math.Log10(vitesseActuelle));

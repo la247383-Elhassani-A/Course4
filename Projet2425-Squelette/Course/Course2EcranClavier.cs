@@ -271,6 +271,7 @@ public partial class Course
     /// </summary>
     public void DessinerParcours()
     {
+        string ligneMetre = "";
         if (!PartieEnCours)
         {
             Console.SetCursorPosition(0, 0);
@@ -284,14 +285,24 @@ public partial class Course
             Console.SetCursorPosition(33, 4);
             Console.WriteLine("┌─────────────┐");
             Console.SetCursorPosition(33, 5);
-            Console.WriteLine("│ " + vitesseActuelle + "   km/h  │");
+            if ((vitesseActuelle / 100) >= 1) ligneMetre = "│ " + vitesseActuelle + "  km/h  │";
+            else if ((vitesseActuelle / 10) >= 1) ligneMetre = "│ " + vitesseActuelle + "    km/h  │";
+            else ligneMetre = "│ " + vitesseActuelle + "    km/h  │";
+            Console.WriteLine(ligneMetre);
             Console.SetCursorPosition(33, 6);
-            Console.WriteLine("│ " + metreCompteur + "   mètres │");
+            if ((metreCompteur / 1000) >= 1) ligneMetre = "│ " + metreCompteur + " mètres │";
+            else if ((vitesseActuelle / 100) >= 1) ligneMetre = "│ " + metreCompteur + "  mètres │";
+            else if ((vitesseActuelle / 10) >= 1) ligneMetre = "│ " + metreCompteur + "   mètres │";
+            else ligneMetre = "│ " + metreCompteur + "    mètres │";
+            Console.WriteLine(ligneMetre);
             metreCompteur += 1;
             Console.SetCursorPosition(33, 7);
             DateTime compteurSecondes = DateTime.Now;
             tempsEntreDebut = compteurSecondes.Subtract(tempsJeu);
-            Console.WriteLine("│ " + tempsEntreDebut.TotalSeconds.ToString("F2") + "  sec.│");
+            if ((tempsEntreDebut.TotalSeconds / 100) >= 1) ligneMetre = "│ " + tempsEntreDebut.TotalSeconds.ToString("F2") + "  sec.│";
+            else if ((tempsEntreDebut.TotalSeconds / 10) >= 1) ligneMetre = "║ Durée: " + tempsEntreDebut.TotalSeconds.ToString("F1") + " sec. ║";
+            else ligneMetre = "║ Durée: " + tempsEntreDebut.TotalSeconds.ToString("F2") + " sec.  ║";
+            Console.WriteLine("│ " + tempsEntreDebut.TotalSeconds.ToString("F1") + "  sec.│");
             Console.SetCursorPosition(33, 8);
             Console.WriteLine("└─────────────┘");
             if (typeDejeu == TypesDeJeu.Temps)
@@ -379,14 +390,22 @@ public partial class Course
         bool nomPasValide = true;
         string mess = "";
         if (bonus) Console.ForegroundColor = ConsoleColor.Yellow;
+        string ligneMetre = "";
         Console.SetCursorPosition(29, 9);
         Console.WriteLine("╔═══════════════════╗");
         Console.SetCursorPosition(29, 10);
         Console.WriteLine("║     Game Over!    ║");
         Console.SetCursorPosition(29, 11);
-        Console.WriteLine("║ Distance: " + metreCompteur + "  m. ║");
+        if ((metreCompteur / 1000) >= 1) ligneMetre = "║ Distance: " + metreCompteur + " m. ║";
+        else if ((metreCompteur / 100) >= 1) ligneMetre = "║ Distance: " + metreCompteur + " m.  ║";
+        else if ((metreCompteur / 10) >= 1) ligneMetre = "║ Distance: " + metreCompteur + " m.   ║";
+        else ligneMetre = "║ Distance: " + metreCompteur + "  m.    ║";
+        Console.WriteLine(ligneMetre);
         Console.SetCursorPosition(29, 12);
-        Console.WriteLine("║ Durée: " + tempsEntreDebut.TotalSeconds.ToString("F2") + " sec. ║");
+        if ((tempsEntreDebut.TotalSeconds / 100) >= 1) ligneMetre = "║ Durée: " + tempsEntreDebut.TotalSeconds.ToString("F2") + " sec.║";
+        else if ((tempsEntreDebut.TotalSeconds / 10) >= 1) ligneMetre = "║ Durée: " + tempsEntreDebut.TotalSeconds.ToString("F2") + " sec. ║";
+        else ligneMetre = "║ Durée: " + tempsEntreDebut.TotalSeconds.ToString("F2") + " sec.  ║";
+        Console.WriteLine(ligneMetre);
         Console.SetCursorPosition(29, 13);
         Console.WriteLine("╚═══════════════════╝");
         Console.SetCursorPosition(0, 23);
@@ -397,6 +416,7 @@ public partial class Course
             Console.Write("\tEntre ton nom : ");
             nomScore = Console.ReadLine()!;
             bool verifBon = true;
+
             while (nomScore == null || nomScore == "" || !verifBon)
             {
                 Console.Clear();
@@ -408,9 +428,16 @@ public partial class Course
                 Console.SetCursorPosition(29, 10);
                 Console.WriteLine("║     Game Over!    ║");
                 Console.SetCursorPosition(29, 11);
-                Console.WriteLine("║ Distance: " + metreCompteur + "  m. ║");
+                if ((metreCompteur / 1000) >= 1) ligneMetre = "║ Distance: " + metreCompteur + " m. ║";
+                else if ((metreCompteur / 100) >= 1) ligneMetre = "║ Distance: " + metreCompteur + " m.  ║";
+                else if ((metreCompteur / 10) >= 1) ligneMetre = "║ Distance: " + metreCompteur + " m.   ║";
+                else ligneMetre = "║ Distance: " + metreCompteur + "  m.    ║";
+                Console.WriteLine(ligneMetre);
                 Console.SetCursorPosition(29, 12);
-                Console.WriteLine("║ Durée: " + tempsEntreDebut.TotalSeconds.ToString("F2") + " sec. ║");
+                if ((tempsEntreDebut.TotalSeconds / 100) >= 1) ligneMetre = "║ Durée: " + tempsEntreDebut.TotalSeconds.ToString("F2") + " sec.║";
+                else if ((tempsEntreDebut.TotalSeconds / 10) >= 1) ligneMetre = "║ Durée: " + tempsEntreDebut.TotalSeconds.ToString("F2") + " sec. ║";
+                else ligneMetre = "║ Durée: " + tempsEntreDebut.TotalSeconds.ToString("F2") + " sec.  ║";
+                Console.WriteLine(ligneMetre);
                 Console.SetCursorPosition(29, 13);
                 Console.WriteLine("╚═══════════════════╝");
                 Console.SetCursorPosition(0, 23);
