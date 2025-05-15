@@ -170,15 +170,21 @@ public partial class Course
 
                 string gauche = ligne.Substring(0, debutAffichageVoiture);
                 string droite = ligne.Substring(debutAffichageVoiture + largueurVoiture);
+
                 int bordure1 = ligne.IndexOf(BORDURE);
                 int bordure2 = ligne.LastIndexOf(BORDURE);
 
                 ligne = gauche + voiture[index - 1] + droite;
                 affichage += ligne.PadLeft(70);
 
-                if (ligne.IndexOf(ROUE_GAUCHE) == bordure1 || ligne.IndexOf(ROUE_GAUCHE_TOURNER) == bordure1 || ligne.IndexOf(ROUE_DROITE) == bordure2 || ligne.IndexOf(ROUE_DROITE_TOURNER) == bordure2)
+                int posRouG = ligne.IndexOf(ROUE_GAUCHE);
+                int posRouGT = ligne.IndexOf(ROUE_GAUCHE_TOURNER);
+                int posRouD = ligne.IndexOf(ROUE_DROITE);
+                int posRouDT = ligne.IndexOf(ROUE_DROITE_TOURNER);
+
+                if ((posRouG != -1 && posRouG <= bordure1) || (posRouGT != -1 && posRouGT <= bordure1) || (posRouD != -1 && posRouD >= bordure2) || (posRouDT != -1 && posRouDT >= bordure2))
                 {
-                    if(typeDejeu == TypesDeJeu.Temps)
+                    if (typeDejeu == TypesDeJeu.Temps)
                     {
                         vitesseActuelle = 5;
                     }
@@ -193,7 +199,7 @@ public partial class Course
             {
                 affichage += "\n";
             }
-            if(test) terraintest.Add(ligne);
+            if (test) terraintest.Add(ligne);
         }
 
     }
@@ -209,8 +215,8 @@ public partial class Course
         try
         {
             int acceleration = 3;
-            if(vitesseActuelle <= 0) vitesseActuelle = VITESSE_MIN;
-            if(vitesseActuelle >= 100) vitesseActuelle = VITESSE_MAX;
+            if (vitesseActuelle <= 0) vitesseActuelle = VITESSE_MIN;
+            if (vitesseActuelle >= 100) vitesseActuelle = VITESSE_MAX;
             int accelerationTouche = Convert.ToInt32(2 / Math.Log10(vitesseActuelle));
             if (acelerer)
             {
