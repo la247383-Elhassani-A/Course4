@@ -32,6 +32,13 @@ public class TestScores
         Assert.IsTrue(Course.CreerDB(true, out mess));
     }
     [TestMethod]
+    public void TestEffacerBaseDeDonnee()
+    {
+        string mess;
+        Course.CreerDB(true, out mess);
+        Assert.IsTrue(Course.EffacerDB(true, out mess));
+    }
+    [TestMethod]
     public void TestAjouterScores()
     {
         string testNom = "Alice";

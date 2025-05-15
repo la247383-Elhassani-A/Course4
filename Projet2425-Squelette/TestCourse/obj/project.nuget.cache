@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nJcduAoRJxI=",
+  "dgSpecHash": "ewLEIBYT2sI=",
   "success": true,
-  "projectFilePath": "/home/ue108/projects/Course3/Projet2425-Squelette/TestCourse/TestCourse.csproj",
+  "projectFilePath": "/home/ue108/projects/Course4/Projet2425-Squelette/TestCourse/TestCourse.csproj",
   "expectedPackageFiles": [
     "/home/ue108/.nuget/packages/coverlet.collector/6.0.0/coverlet.collector.6.0.0.nupkg.sha512",
     "/home/ue108/.nuget/packages/microsoft.codecoverage/17.6.0/microsoft.codecoverage.17.6.0.nupkg.sha512",
